@@ -1,0 +1,15 @@
+---
+title: "FStepsR"
+author: "CV"
+date: "3 5 2020"
+output: word_document
+---
+
+```{r}
+getwd()
+```
+```{r}
+coronaLK <- read.csv("20200324_RKI_Corona_Landkreise.csv", header = TRUE, nrows = 413)
+View(coronaLK)
+```
+
