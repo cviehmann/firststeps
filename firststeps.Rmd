@@ -5,9 +5,15 @@ date: "3 5 2020"
 output: word_document
 ---
 
+
+Laden der working directory 
+
 ```{r}
 getwd()
 ```
+
+
+
 ```{r}
 coronaLK <- read.csv("20200324_RKI_Corona_Landkreise.csv", header = TRUE, nrows = 413)
 View(coronaLK)
