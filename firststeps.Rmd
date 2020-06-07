@@ -12,6 +12,17 @@ strg + alt + I
 
 ```
 
+Using the assignment operator and creating an integer sequence
+```{r}
+x <- 1:33
+```
+
+Auto-Printing the vector 
+```{r}
+x
+```
+
+
 
 Laden der working directory 
 
