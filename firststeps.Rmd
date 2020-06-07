@@ -5,6 +5,13 @@ date: "3 5 2020"
 output: word_document
 ---
 
+Wie fügt man eine command line bei Markdown ein? 
+strg + alt + I 
+
+```{r}
+
+```
+
 
 Laden der working directory 
 
