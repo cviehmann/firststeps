@@ -12,6 +12,12 @@ strg + alt + I
 
 ```
 
+Laden der working directory 
+```{r}
+getwd()
+```
+
+
 Using the assignment operator and creating an integer sequence
 ```{r}
 x <- 1:33
@@ -22,14 +28,32 @@ Auto-Printing the vector
 x
 ```
 
-
-
-Laden der working directory 
-
+Creating the value NaN "not a number" - often used in terms of missing vlaues
 ```{r}
-getwd()
+x <- 0/0
+x
 ```
 
+Creatin different vectors
+```{r}
+a <- c("a", "b", "c")
+b <- c(T,F,T,F,F)
+d <- vector("integer", length = 16)
+```
+
+Ausgeben der attributes dieser Vektoren (aber irgendwie kommt immer Null raus)
+```{r}
+attributes(d)
+```
+
+Umwandlung der Vektoren in eine andere Klasse (as.numeric .integer, .character)
+```{r}
+as.numeric(b)
+```
+
+```{r}
+class(b)
+```
 
 
 ```{r}
