@@ -64,6 +64,25 @@ m
 dim(m)
 ```
 
+Erstellen einer Liste mit Elementen unterschiedlicher Klassen 
+```{r}
+l <- list("quer", 1, 3, F, T)
+l
+```
+ERstellen eines Factors 
+```{r}
+f <- factor(c("m", "m", "f", "f", "f"),
+            levels = c("f","m"))
+f
+```
+
+Häufigkeitsauszählung für Factor 
+
+```{r}
+table(f)
+table(m)
+```
+
 
 ```{r}
 coronaLK <- read.csv("20200324_RKI_Corona_Landkreise.csv", header = TRUE, nrows = 413)
