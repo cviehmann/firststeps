@@ -89,3 +89,17 @@ coronaLK <- read.csv("20200324_RKI_Corona_Landkreise.csv", header = TRUE, nrows 
 View(coronaLK)
 ```
 
+str-Befehl zeigt einem die Stuktur von R-Objekten an 
+```{r}
+str(file)
+```
+
+
+Einlesen einer Website, indem zuerst die Verbidung über url hergestellt wird, diese dann eingelsen werden und in einem R-Objekt gespeichert werden
+Über head oder tail kann man sich Anfang und Ende einer Website auslesen
+```{r}
+con <- url("https://www.sueddeutsche.de/politik/maskenpflicht-wissenschaft-nutzen-1.4958154", "r")
+x <- readLines(con)
+tail(x)
+```
+
