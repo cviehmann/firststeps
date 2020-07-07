@@ -48,11 +48,12 @@ attributes(d)
 
 Umwandlung der Vektoren in eine andere Klasse (as.numeric .integer, .character)
 ```{r}
-as.numeric(b)
+as.numeric(d)
+d
 ```
 
 ```{r}
-class(b)
+class(d)
 ```
 
 Erzeugen einer Matrix
@@ -101,5 +102,20 @@ Einlesen einer Website, indem zuerst die Verbidung über url hergestellt wird, d
 con <- url("https://www.sueddeutsche.de/politik/maskenpflicht-wissenschaft-nutzen-1.4958154", "r")
 x <- readLines(con)
 tail(x)
+```
+
+
+Testen des Subsetting Befehls, indem zuerst ein Vektor mit Zahlen gebilde wird (1 und 2), dann will ich nur die 1 herausfiltern, neuer logical Vektor, der angibt, wann diese bedingung erfüllt ist, diesen nutze ich dann, um einen neuen Vektor zu kreiren, der nur die ausewählten Fälle enthält --> so müsste Fälle auswählen/filtern gehen 
+```{r}
+i <- c(1,1,2,2,1,2,1)
+i
+```
+
+```{r}
+l <- i > 1
+l
+class(l)
+ss <-i[l]
+ss
 ```
 
