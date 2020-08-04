@@ -1,0 +1,90 @@
+---
+title: "Grundlegende Befehle"
+author: "CV"
+date: "2 8 2020"
+output: html_document
+---
+
+Laden von Pakten 
+```{r}
+library(tidyverse)
+library(knitr)
+library(foreign)
+```
+
+Datensatz #HAIM laden um die Befehle auszuführen 
+```{r}
+tote_in_breaking_bad <- read_csv('https://wegweisr.haim.it/Daten/breaking_bad_deaths.csv')
+```
+
+
+Zählen von Zeilen 
+```{r}
+tote_in_breaking_bad %>% 
+  count()
+```
+
+
+Filter
+```{r}
+tote_in_breaking_bad %>% 
+  filter(murderer == 'Walter White') %>% 
+  count()
+```
+
+Zählen von distikten Werten 
+```{r}
+tote_in_breaking_bad %>% 
+  summarise(
+    number_of_entries = n(), #entspricht dem count() Befehl
+    number_of_murderers = n_distinct(murderer) #zählt die distinkten Werte
+  )
+
+```
+
+Gruppieren - quasi Häufigkeitsauszählung  
+
+```{r}
+tote_in_breaking_bad %>% 
+  filter(murderer == 'Walter White') %>% 
+  group_by(method) %>% 
+  count()
+```
+
+```{r}
+tote_in_breaking_bad %>% 
+  filter(murderer == 'Walter White') %>% 
+  group_by(method) %>% 
+  count() %>% 
+  arrange(-n) #absteigend sortieren, wenn man +n schreibt, wird aufsteigend sortiert
+```
+```{r}
+tote_in_breaking_bad %>% 
+    group_by(murderer) %>% 
+  count() %>%
+  arrange(-n)
+```
+
+
+
+
+
+
+
+#Eigener Datensatz - corona 
+```{r}
+corona <-read.spss("20200728_DATA W1-W2Corona incl Postcode_nomissing_education.sav", use.value.labels = F, to.data.frame = T, )
+```
+
+
+#Zeilen zählen 
+```{r}
+corona %>%
+  count()
+```
+Filter  
+```{r}
+corona %>% 
+  filter(Info_Q1_3r >= 4) %>% 
+  count()
+```
