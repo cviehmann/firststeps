@@ -121,3 +121,148 @@ tote_in_breaking_bad %>%
   count() %>% 
   arrange(-n)
 
+
+# Übungen zu Episode I
+
+
+#'     /\___/\
+#'    /       \
+#'   l  u   u  l
+#' --l----*----l--
+#'    \   w   /     - Miau!
+#'      ======
+#'    /       \ __
+#'    l        l\ \
+#'    l        l/ /
+#'    l  l l   l /
+#'    \ ml lm /_/
+
+
+###########################
+# Lücken-Skript
+# Füllen Sie die Kommentare und beschreiben Sie, was die jeweilige Operation macht.
+# Wenn Sie unsicher sind, nutzen Sie die "str"-Funktion.
+###########################
+
+# Zuweisen von Werten zu Variablen 
+alter <- 23
+jahr_aktuell <- 2020
+jahr_geburt <- jahr_aktuell - alter
+
+
+# Laden der library tidyverse
+library(tidyverse)
+
+
+# Einlesen der csvDatei in die 
+tote_in_breaking_bad <- read_csv('https://wegweisr.haim.it/Daten/breaking_bad_deaths.csv')
+
+str(tote_in_breaking_bad)
+
+# Filtert den Datensatz tote_in_breaking_bad nach den Morden "erschossen" ud zählt die Fälle
+tote_in_breaking_bad %>% 
+  filter(method == 'shot') %>% 
+  count()
+
+
+# Filtert Datensatz Tote in Breaking Bad nach allen Mödern außer Walter White
+tote_in_breaking_bad %>% 
+  filter(murderer != 'Walter White') %>% 
+  count()
+
+
+
+###########################
+# Code-Verständnis 2.0
+# Der folgende Code enthält noch nicht gelernte Elemente.
+# Können Sie trotzdem beschreiben, was hier passiert?
+###########################
+
+# Filtert Tote in Breaking Bad nach der Methode = erschossen und Mörder = Walter White
+tote_in_breaking_bad %>% 
+  filter(method == 'shot' & murderer == 'Walter White') %>% 
+  count()
+
+
+# Häufigkeitsauszählung der Tote nach Episode 
+tote_in_breaking_bad %>% 
+  group_by(episode) %>% 
+  count()
+
+#ich wollte herausfinden, as die Todesursache der vielen Toten in Episode 213 ist
+tote_in_breaking_bad %>%
+  filter(episode == 213) %>%
+  group_by(method) %>%
+  count()
+
+# Die Häufigkeitsauszählung der Toten nach Episoden wird der Größe nach absteigend sortiert
+tote_in_breaking_bad %>% 
+  group_by(episode) %>% 
+  count() %>% 
+  arrange(-n)
+
+
+# Die Häufigkeitsauszählung der Toten nach Episoden wird der Größe nach aufsteigend sortiert
+tote_in_breaking_bad %>% 
+  group_by(episode) %>% 
+  count() %>% 
+  arrange(n)
+
+
+# Man lässt sich die Häufigkeitsauszählung nur für Episoden mit mehr als 10 Toten ausgeben
+tote_in_breaking_bad %>% 
+  group_by(episode) %>% 
+  count() %>% 
+  filter(n > 10)
+
+
+# Zusammenfügen der Folgen zu Staffeln 
+tote_in_breaking_bad %>% 
+  bind_cols('season' = c(rep(1, 2), rep(2, 176), rep(3, 28), rep(4, 27), rep(5, 38)))
+
+
+# Neues Datenelement, das die Staffeln als Vriablen enthält
+tote_in_breaking_bad_mit_season <-
+  tote_in_breaking_bad %>% 
+  bind_cols('season' = c(rep(1, 2), rep(2, 176), rep(3, 28), rep(4, 27), rep(5, 38)))
+
+
+# Häufigkeitsauszählung der Tote nach Staffel
+tote_in_breaking_bad_mit_season %>%
+  group_by(season) %>% 
+  count()
+
+
+
+###########################
+# Code-Anpassungen
+# Kopieren Sie sich den Code so zusammen, dass er den Anforderungen gerecht wird.
+###########################
+
+# Anzahl Episoden mit mehr als fünf Toten (korrekt: 6)
+tote_in_breaking_bad %>%
+  group_by(episode) %>%
+  filter(n() > 5) %>% 
+  count()
+  
+
+# Anzahl Opfer je Todesursache, sortiert absteigend nach Anzahl
+# (korrekt: accidental 172, shot 59, poisoned 14, stabbed 13 ...)
+
+
+
+# Mörder mit den meisten Opfern (absteigend sortiert) in Staffel 5
+# (korrekt: Jack/Nazi group 22, Walter White 9 ...)
+
+
+
+# Identifikation "mehrfach ermorderter" Personen (korrekt: Los Pollos Driver & Guard)
+
+
+
+# Namen der Opfer von Jesse, nach Season aufsteigend sortiert
+# (korrekt: Gale in #3, Joaquin Salamanca in #4 und Todd in #5)
+
+
+
+
