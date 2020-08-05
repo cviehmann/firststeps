@@ -75,16 +75,26 @@ tote_in_breaking_bad %>%
 ```{r}
 corona <-read.spss("20200728_DATA W1-W2Corona incl Postcode_nomissing_education.sav", use.value.labels = F, to.data.frame = T, )
 ```
-
-
+#Inspektion Datensatz
+```{r}
+head(corona)
+variable.names(corona)
+```
 #Zeilen zählen 
 ```{r}
 corona %>%
   count()
 ```
-Filter  
+
+#Filter  
 ```{r}
 corona %>% 
   filter(Info_Q1_3r >= 4) %>% 
   count()
+```
+
+#Ziel: Einen besser handhabbaren Teildatensatz aus corona herauslösen 
+```{r}
+sub_corona<- data.frame(corona$Info_Q1_1r, corona$Info_Q1_2r)
+head(sub_corona)
 ```
