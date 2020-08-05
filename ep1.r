@@ -248,21 +248,34 @@ tote_in_breaking_bad %>%
 
 # Anzahl Opfer je Todesursache, sortiert absteigend nach Anzahl
 # (korrekt: accidental 172, shot 59, poisoned 14, stabbed 13 ...)
-
-
+tote_in_breaking_bad %>%
+  group_by(method) %>%
+  count() %>%
+  arrange(-n)
 
 # Mörder mit den meisten Opfern (absteigend sortiert) in Staffel 5
 # (korrekt: Jack/Nazi group 22, Walter White 9 ...)
-
-
+tote_in_breaking_bad_mit_season %>%
+  filter(season==5)%>%
+group_by(murderer)%>%
+count()%>%
+arrange(-n)
+  
 
 # Identifikation "mehrfach ermorderter" Personen (korrekt: Los Pollos Driver & Guard)
-
+tote_in_breaking_bad %>% 
+  group_by(name) %>% 
+filter(n()>1) %>% 
+count()
 
 
 # Namen der Opfer von Jesse, nach Season aufsteigend sortiert
 # (korrekt: Gale in #3, Joaquin Salamanca in #4 und Todd in #5)
-
+tote_in_breaking_bad_mit_season %>%
+  filter(murderer=="Jesse Pinkman") %>%
+  group_by(name)
+   count()%>%
+  arrange(n)
 
 
 
